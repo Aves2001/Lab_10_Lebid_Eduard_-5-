@@ -29,6 +29,11 @@ int main()
 	_yellow
 	scanf("%d", &n);
 	_green
+	if (n < 1)
+	{
+		Error_RED();
+		printf("Розмір масива не може бути меше одиниці.\n\n");
+	}
 	}while(n < 1);
 	// Виділення пам'яті
 	a = (int*)malloc(n * sizeof(int));
