@@ -32,6 +32,13 @@ int main()
 	}while(n < 1);
 	// Виділення пам'яті
 	a = (int*)malloc(n * sizeof(int));
+	if (!a)
+	{
+		Error_RED();
+		printf("Невдалося виділити пам'ять");
+		end_cfg(); //default_cfg.h
+		return 1;
+	}
 	init(a, n);
 	print(a, n);
 	summ_kil(a, n);

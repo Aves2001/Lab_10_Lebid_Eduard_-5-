@@ -20,7 +20,6 @@ void index(int *index, int k); // перевірка правильності в
 void max_diapazon(int *A, int *max); // максимальне число в діапазоні
 
 int i, j, n, m;
-_Bool error = 0;
 
 int main()
 {
@@ -28,7 +27,6 @@ int main()
 	int *A; // вказівник на масив
 	int max[3] = {0}; // масив для збереження максилального числа з вказаного діапазону, та його індекси
 	do{
-	error = 0;
 	printf("Задайте кількість рядків: ");
 	_yellow
 	scanf("%d", &n);
@@ -37,12 +35,10 @@ int main()
 	{
 		Error_RED();
 		printf("Кількість рядків не може бути меше одиниці.\n\n");
-		error = 1;
 	}
 	}while(n < 1);
 	
 	do{
-	error = 0;
 	printf("Задайте кількість стовпців: ");
 	_yellow
 	scanf("%d", &m);
@@ -51,12 +47,18 @@ int main()
 	{
 		Error_RED();
 		printf("Кількість стовпців не може бути меше одиниці.\n\n");
-		error = 1;
 	}
 	}while(m < 1);
 	
 	// Виділення пам'яті
 	A = (int*)malloc(n*m * sizeof(int));
+	if (!A)
+	{
+		Error_RED();
+		printf("Невдалося виділити пам'ять");
+		end_cfg(); //default_cfg.h
+		return 1;
+	}
 	init(A);
 	print(A);
 	
@@ -71,6 +73,7 @@ int main()
 }
 /////////////////////////////////////////////////////////////////////////////
 void index(int *index, int k){
+	_Bool error = 0;
 	do{
 	error = 0;
 	if (n == k && n != m)

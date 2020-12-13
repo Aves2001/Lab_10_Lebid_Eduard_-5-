@@ -21,11 +21,27 @@ int main()
 	start_cfg(); //default_cfg.h
 	int *a; // вказівник на масив
 	int n;
+	do{
 	printf("Введіть розмір масива: ");
+	_yellow
 	scanf("%d", &n);
+	_green
+	if (n < 1)
+	{
+		Error_RED();
+		printf("Кількість рядків не може бути меше одиниці.\n\n");
+	}
+	}while(n < 1);
 
 	// Виділення пам'яті
-	 a = (int*)malloc(n * sizeof(int));
+	a = (int*)malloc(n * sizeof(int));
+	if (!a)
+	{
+		Error_RED();
+		printf("Невдалося виділити пам'ять");
+		end_cfg(); //default_cfg.h
+		return 1;
+	}
 	init(a, n);
 	print(a, n);
 	printf("\r\n\n 1) Мінамальний за модулем елемент: a[%d] = %d", minABS(a, n), a[minABS(a, n)]);
