@@ -44,7 +44,10 @@ int main()
 	}
 	init(a, n);
 	print(a, n);
-	printf("\r\n\n 1) Мінамальний за модулем елемент: a[%d] = %d", minABS(a, n), a[minABS(a, n)]);
+	printf("\r\n\n 1) Мінамальний за модулем елемент:");
+	_yellow
+	printf(" a[%d] = %d", minABS(a, n), a[minABS(a, n)]);
+	_green
 	dobutok00(a, n);
 
 	free(a);
